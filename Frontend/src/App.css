@@ -1,38 +1,29 @@
-.App {
-  text-align: center;
+.app {
+  display: flex;
+  min-height: 100vh; /* Ensure the app takes the full height of the viewport */
+  background-color: #f4f4f4; /* Set background color to match the sidebar */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-content {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; /* Ensure content flows vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  background-color: rgba(0, 0, 255, 0.855); /* Background color */
 }
 
-.App-header {
-  background-color:rgba(0, 0, 255, 0.855);
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  font-size:calc(10px + 2vmin);
-  color:rgba(0, 0, 0, 0.886);
-}
-
-.App-link {
-  color: #043f4f;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.employee-list {
+  width: 100%;
+  max-width: 800px; /* Adjust maximum width as needed */
+  margin-bottom: 20px; /* Add margin bottom to create space between elements */
 }

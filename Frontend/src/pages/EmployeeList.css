@@ -1,0 +1,52 @@
+.employee-list {
+    padding: 20px; /* Adjust padding to fit the content well */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Optional: Limit the maximum width */
+    margin: auto; /* Center the component */
+    box-sizing: border-box;
+  }
+  
+  .employee-list h2 {
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination button {
+    background-color: #f4f4f4;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 2px;
+    cursor: pointer;
+  }
+  
+  .pagination button.active {
+    background-color: #ddd;
+  }
+  
+  .pagination button:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+  }
+  

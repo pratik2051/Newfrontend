@@ -1,0 +1,101 @@
+.body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .employee-details-page {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  .profile-tabs-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .profile-box {
+    flex: 1;
+    min-width: 300px; /* Adjust as necessary */
+    max-height: 255px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .tabs-box {
+    flex: 1;
+    min-width: 600px; /* Adjust as necessary */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .profile-info {
+    text-align: center;
+  }
+  
+  .tabs-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  .tabs button {
+    background-color: #f4f4f4;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .tabs button.active {
+    background-color: #ddd;
+  }
+  
+  .tab-content {
+    width: 100%;
+  }
+  
+  .back-button-container {
+    margin-top: auto;
+    align-self: flex-end;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .back-button {
+    background-color: #f4f4f4;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  

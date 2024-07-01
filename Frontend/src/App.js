@@ -12,6 +12,8 @@ import NoPageFound from "./pages/NoPageFound";
 import AuthContext from "./AuthContext";
 import Authen1 from "./pages/Authen1";
 import Reset from "./pages/Reset";
+import EmployeeList from './pages/EmployeeList';
+import EmployeeDetails from './pages/EmployeeDetails';
 
 // import  tectedWrapper from "./ProtectedWrapper";
 import { useEffect, useState } from "react";
@@ -83,6 +85,8 @@ import EditSupplier from "./components/EditSupplier";
             }
           >
             <Route index element={<Dashboard />} />
+            <Route path="/employeelist" element={<EmployeeList />} />
+            <Route path="/employee/:code" element={<EmployeeDetails />} />
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/Supplier" element={<Supplier />} />
             <Route path="/user" element={<User />} />
