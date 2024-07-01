@@ -31,17 +31,17 @@ function SideMenu() {
           </Link>
          
           <Link
-            to="/purchase-order"
+            to="/asset"
             className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
           >
             <img
               alt="purchase-icon"
-              src={require("../assets/order-icon.png")}
+              src={require("../assets/asset-icon.png")}
             />
             <span className="text-sm font-medium">  Asset</span>
           </Link>
           <Link
-            to="/purchase-order"
+            to="/supplier"
             className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
           >
             <img
@@ -51,52 +51,52 @@ function SideMenu() {
             <span className="text-sm font-medium">  Supplier</span>
           </Link>
           <Link
-            to="/purchase-order"
+            to="/room"
             className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
           >
             <img
               alt="purchase-icon"
-              src={require("../assets/order-icon.png")}
+              src={require("../assets/room-icon.png")}
             />
-            <span className="text-sm font-medium">  Rooms</span>
+            <span className="text-sm font-medium">  Room</span>
           </Link>
           <Link
-            to="/purchase-order"
+            to="/location"
             className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
           >
             <img
               alt="purchase-icon"
-              src={require("../assets/order-icon.png")}
+              src={require("../assets/location-icon.png")}
             />
             <span className="text-sm font-medium">  Location</span>
           </Link>
           <Link
-            to="/purchase-order"
+            to="/reports"
             className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
           >
             <img
               alt="purchase-icon"
-              src={require("../assets/order-icon.png")}
+              src={require("../assets/reports-icon.png")}
             />
             <span className="text-sm font-medium">  Reports</span>
           </Link>
           <Link
-            to="/purchase-order"
+            to="/activity"
             className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
           >
             <img
               alt="purchase-icon"
-              src={require("../assets/order-icon.png")}
+              src={require("../assets/activity-icon.png")}
             />
             <span className="text-sm font-medium">  Activity</span>
           </Link>
           <Link
-            to="/purchase-order"
+            to="/permission"
             className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
           >
             <img
               alt="purchase-icon"
-              src={require("../assets/order-icon.png")}
+              src={require("../assets/permission-icon.png")}
             />
             <span className="text-sm font-medium">  Permission</span>
           </Link>

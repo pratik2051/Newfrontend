@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 
-export default function AddSupplierDetails({
+export default function AddRoomDetails({
   addSaleModalSetting,
   products,
   handlePageUpdate,
@@ -88,25 +88,61 @@ export default function AddSupplierDetails({
                         as="h3"
                         className="text-lg  py-4 font-semibold leading-6 text-gray-900 "
                       >
-                        Supplier Details
+                        Room Details
                       </Dialog.Title>
                       <form action="#">
                         <div className="grid gap-4 mb-4 sm:grid-cols-2">
                           <div className="h-fit w-fit">
                             <label
                               className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-                              htmlFor="name"
+                              htmlFor="room_id"
                             >
-                              Supplier Name:
+                              Room ID:
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="text"
+                              type="number"
+                              id="room_id"
+                              name="room_id"
+                              placeholder="Enter Room ID"
+                              onChange={(e) =>
+                                handleInputChange(e.target.name, e.target.value)
+                              }
+                            />
+                          </div>
+                          <div className="h-fit w-fit">
+                            <label
+                              className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
+                              htmlFor="Name"
+                            >
+                              Name:
+                            </label>
+                            <input
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                              type="string"
                               id="name"
                               name="name"
-                              placeholder="Enter Supplier Name"
+                              placeholder="Enter Name"
                               onChange={(e) =>
-                              handleInputChange(e.target.name, e.target.value)
+                                handleInputChange(e.target.name, e.target.value)
+                              }
+                            />
+                          </div>
+                          <div className="h-fit w-fit">
+                            <label
+                              className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
+                              htmlFor="location_id"
+                            >
+                              LocationID:
+                            </label>
+                            <input
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                              type="number"
+                              id="location_id"
+                              name="location_id"
+                              placeholder="Enter Location ID"
+                              onChange={(e) =>
+                                handleInputChange(e.target.name, e.target.value)
                               }
                             />
                           </div>
@@ -119,54 +155,10 @@ export default function AddSupplierDetails({
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="paragraph"
+                              type="string"
                               id="description"
                               name="description"
                               placeholder="Enter Description"
-                              //value={purchase.purchaseDate}
-                              onChange={(e) =>
-                                handleInputChange(e.target.name, e.target.value)
-                              }
-                            />
-                          </div>
-                          <div className="h-fit w-fit">
-                            {/* <Datepicker
-                              onChange={handleChange}
-                              show={show}
-                              setShow={handleClose}
-                            /> */}
-                            <label
-                              className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-                              htmlFor="email"
-                            >
-                              Email:
-                            </label>
-                            <input
-                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="email"
-                              id="email"
-                              name="email"
-                              placeholder="Enter Supplier Email"
-                              //value={purchase.purchaseDate}
-                              onChange={(e) =>
-                                handleInputChange(e.target.name, e.target.value)
-                              }
-                            />
-                          </div>
-                          <div className="h-fit w-fit">
-                            <label
-                              className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-                              htmlFor="mobile_no"
-                            >
-                              Mobile No.:
-                            </label>
-                            <input
-                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="text"
-                              id="mobile_no"
-                              name="mobile_no"
-                              placeholder="Enter Supplier Mobile No."
-                              //value={purchase.purchaseDate}
                               onChange={(e) =>
                                 handleInputChange(e.target.name, e.target.value)
                               }

@@ -14,6 +14,10 @@ import Authen1 from "./pages/Authen1";
 import Reset from "./pages/Reset";
 import EmployeeList from './pages/EmployeeList';
 import EmployeeDetails from './pages/EmployeeDetails';
+import Asset from './pages/Asset';
+import Room from './pages/Room';
+import Location from './pages/Location';
+import Permission from './pages/Permission';
 
 // import  tectedWrapper from "./ProtectedWrapper";
 import { useEffect, useState } from "react";
@@ -90,6 +94,10 @@ import EditSupplier from "./components/EditSupplier";
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/Supplier" element={<Supplier />} />
             <Route path="/user" element={<User />} />
+            <Route path="/asset" element={<Asset />} />
+            <Route path="/room" element={<Room />} />
+            <Route path="/location" element={<Location />} />
+            <Route path="/permission" element={<Permission />} />
           </Route>
           <Route path="*" element={<NoPageFound />} />
         </Routes>

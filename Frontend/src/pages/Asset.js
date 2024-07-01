@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import AddSupplierDetails from "../components/AddSupplierDetails";
+import AddAssetDetails from "../components/AddAssetDetails";
 import AuthContext from "../AuthContext";
 import { Link } from "react-router-dom";
 
-function SupplierDetails() {
+function AssetDetails() {
   const [showPurchaseModal, setPurchaseModal] = useState(false);
   const [purchase, setAllPurchaseData] = useState([]);
   const [updatePage, setUpdatePage] = useState(true);
@@ -12,8 +12,8 @@ function SupplierDetails() {
 
  
 
-  const handleDelete = (supplierId) => {
-    fetch(`http://localhost:8080/api/v1/auth/supplier/delsupplier/${supplierId}`, {
+  const handleDelete = (asset_id) => {
+    fetch(`http://localhost:8080/api/v1/auth/supplier/delsupplier/${asset_id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ function SupplierDetails() {
       .catch((err) => console.error(err));
   };
 
-  // Fetching Data of All Suppliers
+  // Fetching Data of All Assets
   const fetchPurchaseData = () => {
     fetch(`http://localhost:8080/api/v1/auth/supplier/getsuppliers`)
       .then((response) => response.json())
@@ -40,11 +40,11 @@ function SupplierDetails() {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     fetchPurchaseData();
   }, [updatePage]);
 
-  // Modal for Adding Supplier
+  // Modal for Adding Asset
   const addSaleModalSetting = () => {
     setPurchaseModal(!showPurchaseModal);
   };
@@ -58,7 +58,7 @@ function SupplierDetails() {
     <div className="col-span-12 lg:col-span-10 flex justify-center">
       <div className="flex flex-col gap-5 w-11/12">
         {showPurchaseModal && (
-          <AddSupplierDetails
+          <AddAssetDetails
             addSaleModalSetting={addSaleModalSetting}
             handlePageUpdate={handlePageUpdate}
             authContext={authContext}
@@ -68,14 +68,14 @@ function SupplierDetails() {
         <div className="overflow-x-auto rounded-lg border bg-white border-gray-200">
           <div className="flex justify-between pt-5 pb-3 px-3">
             <div className="flex gap-4 justify-center items-center">
-              <span className="font-bold">Supplier Details</span>
+              <span className="font-bold">Asset Details</span>
             </div>
             <div className="flex gap-4">
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 text-xs rounded"
                 onClick={addSaleModalSetting}
               >
-                Add Supplier
+                Add Asset
               </button>
             </div>
           </div>
@@ -83,39 +83,93 @@ function SupplierDetails() {
             <thead>
               <tr>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  AssetID
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  AssetCode
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  AssetCategoryID
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  StatusID
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  EmployeeID
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  RoomID
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  Model
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  CompanyName
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  SerialNumber
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  PurchaseDate
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  PurchaseCost
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   SupplierID
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Name
+                  Warrenty
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Description
-                </th>
-                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Email
-                </th>
-                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Mobile No.
                 </th>
             </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {purchase.map((element) => (
-                <tr key={element.supplier}>
+                <tr key={element.asset}>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-900">
+                    {element.asset_id}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.asset_code}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.asset_category_id}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.status_id}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.employee_id}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-900">
+                    {element.room_id}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.model}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.company_name}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.serial_number}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.purchase_date}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-900">
+                    {element.purchase_cost}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {element.supplier_id}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.name}
+                    {element.warrenty}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {element.description}
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.email}
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.mobile_no}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-white">
                     <Link to={ `/editsupplier/${element.supplierId}`}>
@@ -143,4 +197,4 @@ function SupplierDetails() {
   );
 }
 
-export default SupplierDetails;
+export default AssetDetails;
