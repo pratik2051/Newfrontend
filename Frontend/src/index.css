@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Reset default margin and padding */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply a base font size and family */
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Improve readability of code snippets */
+code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  background-color:rgba(0, 0, 0, 0.914);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  color:rgba(0, 255, 255, 0.871);
+}
