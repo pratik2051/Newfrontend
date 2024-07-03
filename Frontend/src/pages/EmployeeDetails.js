@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import employees from './data/employees';
+import axios from 'axios';
 import './EmployeeDetails.css';
 import BackIcon from '../assets/back.png'; // Adjust the path relative to EmployeeDetails.js
 
 const EmployeeDetails = () => {
-  const { code } = useParams();
-  const employee = employees.find(emp => emp.code === parseInt(code));
+  const { id } = useParams();
+  const [employee, setEmployee] = useState(null);
   const [activeTab, setActiveTab] = useState('currentAssets');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchEmployee = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/v1/auth/users`);
+        setEmployee(response.data);
+      } catch (error) {
+        console.error('Error fetching employee:', error);
+      }
+    };
+
+    fetchEmployee();
+  }, [id]);
+
   if (!employee) {
-    return <div>Employee not found</div>;
+    return <div>Loading...</div>; // Handle loading state
   }
 
   const renderCurrentAssets = () => (
@@ -90,7 +103,7 @@ const EmployeeDetails = () => {
       </div>
       <div className="back-button-container">
         <button className="back-button" onClick={() => navigate('/employeelist')}>
-          <img src={BackIcon} alt="BACK"></img>Back to EmployeeList
+          <img src={BackIcon} alt="BACK" />Back to Employee List
         </button>
       </div>
     </div>

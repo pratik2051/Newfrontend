@@ -25,7 +25,7 @@ function Login() {
       
       alert("Successfully logged in");
       localStorage.setItem("user",JSON.stringify(data.accessToken));
-      navigate("/inventory");
+      navigate("/");
       authContext.signin(data._id, () => {
        
       });

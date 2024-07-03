@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './EmployeeList.css';
 import { useNavigate } from 'react-router-dom';
-import employees from './data/employees';
+import axios from 'axios';
 
 const EmployeeList = () => {
+  const [employees, setEmployees] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/v1/employees/getallemployee');
+        setEmployees(response.data);
+      } catch (error) {
+        console.error('Error fetching employees:', error);
+      }
+    };
+
+    fetchEmployees();
+  }, []);
 
   const totalPages = Math.ceil(employees.length / itemsPerPage);
 
@@ -15,16 +29,15 @@ const EmployeeList = () => {
   };
 
   const handleRowClick = (employee) => {
-    // You can perform any action here, such as navigating to another page
-    navigate(`/employee/${employee.code}`);
+    navigate(`/employee/${employee.id}`);
   };
 
   const renderEmployees = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const selectedEmployees = employees.slice(startIndex, startIndex + itemsPerPage);
     return selectedEmployees.map((employee, index) => (
-      <tr key={index} onClick={() => handleRowClick(employee)}>
-        <td>{employee.code}</td>
+      <tr key={employee.id} onClick={() => handleRowClick(employee)}>
+        <td>{employee.id}</td>
         <td>{employee.name}</td>
         <td>{employee.email}</td>
       </tr>
@@ -37,7 +50,7 @@ const EmployeeList = () => {
       <table>
         <thead>
           <tr>
-            <th>Employee Code</th>
+            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
           </tr>

@@ -10,29 +10,10 @@ function AssetDetails() {
 
   const authContext = useContext(AuthContext);
 
- 
-
-  const handleDelete = (asset_id) => {
-    fetch(`http://localhost:8080/api/v1/auth/supplier/delsupplier/${asset_id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          setUpdatePage(!updatePage); // Trigger page update to refresh the list
-        } else {
-          console.error('Failed to delete supplier');
-        }
-      })
-      .catch((err) => console.error(err));
-  };
 
   // Fetching Data of All Assets
   const fetchPurchaseData = () => {
-    fetch(`http://localhost:8080/api/v1/auth/supplier/getsuppliers`)
+    fetch(`http://localhost:8080/api/v1/assets/getallasset`)
       .then((response) => response.json())
       .then((data) => {
         setAllPurchaseData(data);
@@ -83,28 +64,16 @@ function AssetDetails() {
             <thead>
               <tr>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  AssetID
+                  Asset Tag
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  AssetCode
-                </th>
-                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  AssetCategoryID
-                </th>
-                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  StatusID
-                </th>
-                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  EmployeeID
-                </th>
-                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  RoomID
-                </th>
-                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Model
+                  Category
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   CompanyName
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  Model
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   SerialNumber
@@ -113,60 +82,75 @@ function AssetDetails() {
                   PurchaseDate
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  PurchaseCost
+                  PurchaseDate
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  SupplierID
+                  PurchaseCost
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Warrenty
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Description
+                  Status
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  Employee
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  Room
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  Location
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  Supplier
+                </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  Action
                 </th>
             </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {purchase.map((element) => (
-                <tr key={element.asset}>
+                <tr key={element.asset_tag}>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-900">
-                    {element.asset_id}
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.asset_code}
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.asset_category_id}
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.status_id}
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.employee_id}
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-900">
-                    {element.room_id}
+                    {element.company_name}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {element.model}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.company_name}
+                    {element.name}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.description}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.warrenty}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-900">
                     {element.serial_number}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {element.purchase_date}
                   </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-900">
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {element.purchase_cost}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.supplier_id}
+                    {element.catagory_id}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.warrenty}
+                    {element.status_id}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-900">
+                    {element.employee_id}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.room_id}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {element.location}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {element.description}

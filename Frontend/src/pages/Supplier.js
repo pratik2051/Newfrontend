@@ -12,8 +12,8 @@ function SupplierDetails() {
 
  
 
-  const handleDelete = (supplierId) => {
-    fetch(`http://localhost:8080/api/v1/auth/supplier/delsupplier/${supplierId}`, {
+  const handleDelete = (Id) => {
+    fetch(`http://localhost:8080/api/v1/suppliers/delsupplier/${Id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ function SupplierDetails() {
 
   // Fetching Data of All Suppliers
   const fetchPurchaseData = () => {
-    fetch(`http://localhost:8080/api/v1/auth/supplier/getsuppliers`)
+    fetch(`http://localhost:8080/api/v1/suppliers/getallsuppliers`)
       .then((response) => response.json())
       .then((data) => {
         setAllPurchaseData(data);
@@ -83,7 +83,7 @@ function SupplierDetails() {
             <thead>
               <tr>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  SupplierID
+                  ID
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Name
@@ -103,7 +103,7 @@ function SupplierDetails() {
               {purchase.map((element) => (
                 <tr key={element.supplier}>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-900">
-                    {element.supplier_id}
+                    {element.id}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {element.name}
@@ -115,7 +115,7 @@ function SupplierDetails() {
                     {element.email}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.mobile_no}
+                    {element.mobileno}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-white">
                     <Link to={ `/editsupplier/${element.supplierId}`}>
