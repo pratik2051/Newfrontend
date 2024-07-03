@@ -19,6 +19,7 @@ import Room from './pages/Room';
 import Location from './pages/Location';
 import Permission from './pages/Permission';
 import Report from './pages/Report';
+import Activity from "./pages/Activity";
 
 // import  tectedWrapper from "./ProtectedWrapper";
 import { useEffect, useState } from "react";
@@ -100,6 +101,7 @@ import EditSupplier from "./components/EditSupplier";
             <Route path="/location" element={<Location />} />
             <Route path="/permission" element={<Permission />} />
             <Route path="/report" element={<Report />} />
+            <Route path="/activity" element={<Activity />} />
           </Route>
           <Route path="*" element={<NoPageFound />} />
         </Routes>

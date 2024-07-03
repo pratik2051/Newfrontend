@@ -24,7 +24,7 @@ function Authenticate() {
         otp: form.otp,
       });
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         alert('OTP verified successfully. Registration complete.');
         setOtpVerified(true);
         navigate('/login');

@@ -101,7 +101,7 @@ function SupplierDetails() {
             </thead>
             <tbody className="divide-y divide-gray-200">
               {purchase.map((element) => (
-                <tr key={element.supplier}>
+                <tr key={element.id}>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-900">
                     {element.id}
                   </td>
@@ -118,7 +118,7 @@ function SupplierDetails() {
                     {element.mobileno}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-white">
-                    <Link to={ `/editsupplier/${element.supplierId}`}>
+                    <Link to={ `/editsupplier/${element.id}`}>
                     <button
                       className="bg-yellow-500 hover:bg-green-700 text-white font-bold p-2 text-xs rounded"
                       onClick={addSaleModalSetting}
@@ -128,7 +128,12 @@ function SupplierDetails() {
                     </Link>
                     <button
                       className="bg-red-600 p-2 rounded cursor-pointer"
-                      onClick={() => handleDelete(element.supplierId)}
+                      onClick={() => {
+                        if (window.confirm("Are you sure you want to delete this item?")) {
+                          handleDelete(element.id);
+                        }
+                      }}
+                      
                     >
                       Delete
                     </button>
