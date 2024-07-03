@@ -18,6 +18,7 @@ import Asset from './pages/Asset';
 import Room from './pages/Room';
 import Location from './pages/Location';
 import Permission from './pages/Permission';
+import Report from './pages/Report';
 
 // import  tectedWrapper from "./ProtectedWrapper";
 import { useEffect, useState } from "react";
@@ -98,6 +99,7 @@ import EditSupplier from "./components/EditSupplier";
             <Route path="/room" element={<Room />} />
             <Route path="/location" element={<Location />} />
             <Route path="/permission" element={<Permission />} />
+            <Route path="/report" element={<Report />} />
           </Route>
           <Route path="*" element={<NoPageFound />} />
         </Routes>

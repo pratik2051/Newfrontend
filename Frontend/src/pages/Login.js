@@ -25,11 +25,9 @@ function Login() {
       
       alert("Successfully logged in");
       localStorage.setItem("user",JSON.stringify(data.accessToken));
-<<<<<<< HEAD
+
       navigate("/");
-=======
-      navigate("/dashboard");
->>>>>>> 1fef327e817e57a73b47ce02e626838fc8c28fd8
+
       authContext.signin(data._id, () => {
        
       });
