@@ -38,7 +38,7 @@ const EmployeeList = () => {
     return selectedEmployees.map((employee, index) => (
       <tr key={employee.id} onClick={() => handleRowClick(employee)}>
         <td>{employee.id}</td>
-        <td>{employee.name}</td>
+        <td>{employee.fullName}</td>
         <td>{employee.email}</td>
       </tr>
     ));
