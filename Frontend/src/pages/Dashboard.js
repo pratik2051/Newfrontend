@@ -15,16 +15,16 @@ function Dashboard() {
         const totalAssetResponse = await axios.get('http://localhost:8080/api/v1/assets/getallasset');
         setTotalAsset(totalAssetResponse.data);
 
-        const totalEmployeeResponse = await axios.get('http://localhost:8080/api/v1/employees/getallemployee');
+        const totalEmployeeResponse = await axios.get('http://localhost:8080/api/v1/employees/employeeno');
         setTotalEmployee(totalEmployeeResponse.data);
 
-        const brokenAssetsResponse = await axios.get('http://localhost:8080/api/v1/asset-statuses/getallassetstatus');
+        const brokenAssetsResponse = await axios.get('http://localhost:8080/api/v1/assets/getcountbrokenasset');
         setBrokenAssets(brokenAssetsResponse.data);
 
-        const spareAssetsResponse = await axios.get('http://localhost:8080/api/v1/assets/getallasset');
+        const spareAssetsResponse = await axios.get('http://localhost:8080/api/v1/assets/getcountspares');
         setSpareAssets(spareAssetsResponse.data);
 
-        const workingAssetsResponse = await axios.get('http://localhost:8080/api/v1/asset-statuses/getallassetstatus');
+        const workingAssetsResponse = await axios.get('http://localhost:8080/api/v1/assets/getcountworkingassets');
         setWorkingAssets(workingAssetsResponse.data);
 
         const computersResponse = await axios.get('http://localhost:8080/api/v1/assets/getallasset');
@@ -41,10 +41,10 @@ function Dashboard() {
   return (
     <div className="grid grid-cols-1 col-span-12 lg:col-span-10 gap-6 md:grid-cols-3 lg:grid-cols-4 p-4">
       <DashboardCard title="Total Assets" value={totalAsset.length} />
-      <DashboardCard title="Total Employees" value={totalEmployee.length} />
-      <DashboardCard title="Broken Assets" value={brokenAssets.length} />
-      <DashboardCard title="Spare Assets" value={spareAssets.length} />
-      <DashboardCard title="Working Assets" value={workingAssets.length} />
+      <DashboardCard title="Total Employees" value={totalEmployee} />
+      <DashboardCard title="Broken Assets" value={brokenAssets} />
+      <DashboardCard title="Spare Assets" value={spareAssets} />
+      <DashboardCard title="Working Assets" value={workingAssets} />
       <DashboardCard title="Computers" value={computers.length} />
     </div>
   );
