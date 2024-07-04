@@ -35,7 +35,7 @@ export default function AddSupplierDetails({
       body: JSON.stringify(purchase),
     })
       .then((result) => {
-        alert("Supplier ADDED");
+        alert("Supplier Details Submitted");
         handlePageUpdate();
         addSaleModalSetting();
       })
@@ -204,7 +204,7 @@ export default function AddSupplierDetails({
                     className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
                     onClick={addSale}
                   >
-                    Add
+                    Submit Details
                   </button>
                   <button
                     type="button"

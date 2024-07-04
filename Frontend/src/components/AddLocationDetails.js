@@ -29,11 +29,11 @@ export default function AddLocationDetails({
     })
       .then((response) => {
         if (response.ok) {
-          alert("Location added successfully");
+          alert("Location submitted successfully");
           handlePageUpdate();
           addLocationModalSetting();
         } else {
-          alert("Failed to add location");
+          alert("Failed to submit location");
         }
       })
       .catch((err) => console.error(err));
@@ -84,7 +84,7 @@ export default function AddLocationDetails({
                         as="h3"
                         className="text-lg  py-4 font-semibold leading-6 text-gray-900"
                       >
-                        Add Location
+                        Location Details
                       </Dialog.Title>
                       <form action="#">
                         <div className="grid gap-4 mb-4 sm:grid-cols-2">
@@ -153,7 +153,7 @@ export default function AddLocationDetails({
                     className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
                     onClick={addLocation}
                   >
-                    Add
+                    Submit Details
                   </button>
                   <button
                     type="button"

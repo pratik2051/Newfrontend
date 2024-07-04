@@ -97,6 +97,9 @@ function SupplierDetails() {
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Mobile No.
                 </th>
+                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  Actions
+                </th>
             </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
@@ -118,16 +121,16 @@ function SupplierDetails() {
                     {element.mobileno}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-white">
-                    <Link to={ `/editsupplier/${element.id}`}>
+                    {/* <Link to={ `/editsupplier/${element.id}`}> */}
                     <button
-                      className="bg-yellow-500 hover:bg-green-700 text-white font-bold p-2 text-xs rounded"
-                      onClick={addSaleModalSetting}
+                      className="bg-yellow-500 hover:bg-green-700 text-white font-bold p-2 text-xs rounded mx-4"
+                      onClick={() => addSaleModalSetting(element.id, false)}
                     >
                       Update
                     </button>
-                    </Link>
+                    {/* </Link> */}
                     <button
-                      className="bg-red-600 p-2 rounded cursor-pointer"
+                      className="bg-yellow-500 hover:bg-red-700 text-white font-bold p-2 text-xs rounded"
                       onClick={() => {
                         if (window.confirm("Are you sure you want to delete this item?")) {
                           handleDelete(element.id);

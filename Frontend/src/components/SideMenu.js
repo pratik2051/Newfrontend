@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Image from "../assets/user-icon.png"
 
 function SideMenu() {
-  const localStorageData = JSON.parse(localStorage.getItem("user"));
-
+  const localStorageData = localStorage.getItem("firstName");
+  const localStorageData1 = localStorage.getItem("lastName");
+  
   return (
     <div className="h-full flex-col justify-between  bg-white hidden lg:flex ">
       <div className="px-4 py-6">
@@ -80,7 +82,7 @@ function SideMenu() {
             />
             <span className="text-sm font-medium">  Reports</span>
           </Link>
-          <Link
+          {/* <Link
             to="/activity"
             className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
           >
@@ -89,8 +91,8 @@ function SideMenu() {
               src={require("../assets/activity-icon.png")}
             />
             <span className="text-sm font-medium">  Activity</span>
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             to="/permission"
             className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
           >
@@ -99,7 +101,7 @@ function SideMenu() {
               src={require("../assets/permission-icon.png")}
             />
             <span className="text-sm font-medium">  Permission</span>
-          </Link>
+          </Link> */}
         </nav>
       </div>
 
@@ -107,17 +109,17 @@ function SideMenu() {
         <div className="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
           <img
             alt="Profile"
-            src={localStorageData.imageUrl}
+            src={Image}
             className="h-10 w-10 rounded-full object-cover"
           />
 
           <div>
             <p className="text-xs">
               <strong className="block font-medium">
-                {localStorageData.firstName + " " + localStorageData.lastName}
+               {localStorageData}
               </strong>
 
-              <span> {localStorageData.email} </span>
+              <span> {localStorageData1} </span>
             </p>
           </div>
         </div>

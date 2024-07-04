@@ -10,21 +10,26 @@ function RoomDetails() {
 
   const authContext = useContext(AuthContext);
 
-  const handleDelete = (room_id) => {
-    fetch(`http://localhost:8080/api/v1/rooms/delroom/${room_id}`, {
+  const handleDelete = (id) => {
+    console.log(`Attempting to delete supplier with ID: ${id}`);
+    fetch(`http://localhost:8080/api/v1/rooms/deleteroom/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
     })
       .then((response) => {
+        console.log('Delete response status:', response.status);
         if (response.ok) {
           setUpdatePage(!updatePage); // Trigger page update to refresh the list
         } else {
-          console.error('Failed to delete room');
+          return response.json().then((error) => {
+            console.error('Failed to delete room:', error);
+            throw new Error('Failed to delete room');
+          });
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error('Error during delete request:', err));
   };
 
   const fetchRoomData = () => {
@@ -82,7 +87,7 @@ function RoomDetails() {
                   Name
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  LocationID
+                  Location
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Description
@@ -102,21 +107,22 @@ function RoomDetails() {
                     {room.name}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {room.locationid}
+                    {room.location}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {room.description}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-white">
-                    <Link to={`/editroom/${room.id}`}>
+                    {/* <Link to={`/editroom/${room.id}`}> */}
                       <button
-                        className="bg-yellow-500 hover:bg-green-700 text-white font-bold p-2 text-xs rounded"
+                        className="bg-yellow-500 hover:bg-green-700 text-white font-bold p-2 text-xs rounded mx-4"
+                        onClick={() => addRoomModalSetting(room.id, false)}
                       >
                         Update
                       </button>
-                    </Link>
+                    {/* </Link> */}
                     <button
-                      className="bg-red-600 p-2 rounded cursor-pointer"
+                      className="bg-yellow-500 hover:bg-red-700 text-white font-bold p-2 text-xs rounded"
                       onClick={() => handleDelete(room.id)}
                     >
                       Delete

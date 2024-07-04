@@ -22,16 +22,20 @@ export default function AddRoomDetails({ addRoomModalSetting, handlePageUpdate }
       .then((response) => {
         alert("Room ADDED");
         handlePageUpdate();
-        addRoom();
+        setOpen(false); // Close dialog after successful addition
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
+  const handleAddRoomClick = () => {
+    addRoom(); // Call addRoom function on button click
+  };
+
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
+      <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => setOpen(false)}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -76,7 +80,7 @@ export default function AddRoomDetails({ addRoomModalSetting, handlePageUpdate }
                           <div className="h-fit w-fit">
                             <label
                               className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-                              htmlFor="room_id"
+                              htmlFor="id"
                             >
                               Room ID:
                             </label>
@@ -100,7 +104,7 @@ export default function AddRoomDetails({ addRoomModalSetting, handlePageUpdate }
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="text"
+                              type="string"
                               id="name"
                               name="name"
                               placeholder="Enter Name"
@@ -112,16 +116,16 @@ export default function AddRoomDetails({ addRoomModalSetting, handlePageUpdate }
                           <div className="h-fit w-fit">
                             <label
                               className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-                              htmlFor="location_id"
+                              htmlFor="location"
                             >
                               Location ID:
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="number"
-                              id="location_id"
-                              name="location_id"
-                              placeholder="Enter Location ID"
+                              type="string"
+                              id="location"
+                              name="location"
+                              placeholder="Enter Location"
                               onChange={(e) =>
                                 handleInputChange(e.target.name, e.target.value)
                               }
@@ -136,7 +140,7 @@ export default function AddRoomDetails({ addRoomModalSetting, handlePageUpdate }
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="text"
+                              type="string"
                               id="description"
                               name="description"
                               placeholder="Enter Description"
@@ -157,14 +161,14 @@ export default function AddRoomDetails({ addRoomModalSetting, handlePageUpdate }
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
-                    onClick={addRoom}
+                    onClick={handleAddRoomClick} // Use handleAddRoomClick to avoid multiple calls
                   >
-                    Add
+                    Submit Details
                   </button>
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                    onClick={() => addRoom()}
+                    onClick={() => setOpen(false)} // Close dialog without calling addRoom again
                     ref={cancelButtonRef}
                   >
                     Cancel

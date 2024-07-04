@@ -2,11 +2,10 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 
-export default function AddAssetDetails({
+export default function UpdateAssetDetails({
   addSaleModalSetting,
   handlePageUpdate,
-  authContext,
-  type // Add type prop here
+  authContext
 }) {
   const [asset, setAsset] = useState({
     id: 0,
@@ -18,12 +17,11 @@ export default function AddAssetDetails({
     warranty: "",
     serial_number: "",
     purchase_date: "",
-    quantity: 0,
-    category: "",
-    status: "",
+    purchase_cost: 0,
+    category_id: 0,
+    status_id: 0,
     employee_id: 0,
-    room_id: 0,
-    supplier_id: 0
+    room_id: 0
   });
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
@@ -34,10 +32,10 @@ export default function AddAssetDetails({
   const handleInputChange = (key, value) => {
     setAsset({ ...asset, [key]: value });
   };
-console.log(type);
+
   // POST Data
-  const addAsset = () => {
-    fetch("http://localhost:8080/api/v1/assets/createasset", {
+  const updateAsset = () => {
+    fetch("http://localhost:8080/api/v1/assets/updateasset/${id}", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -45,7 +43,7 @@ console.log(type);
       body: JSON.stringify(asset),
     })
       .then((result) => {
-        alert("Asset Detail Submitted");
+        alert("Asset Updated");
         handlePageUpdate();
         addSaleModalSetting();
       })
@@ -129,7 +127,7 @@ console.log(type);
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="string"
+                              type="text"
                               id="asset_tag"
                               name="asset_tag"
                               placeholder="Enter Asset Tag"
@@ -141,16 +139,16 @@ console.log(type);
                           <div className="h-fit w-fit">
                             <label
                               className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-                              htmlFor="category"
+                              htmlFor="category_id"
                             >
-                              Category:
+                              Category ID:
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="string"
-                              id="category"
-                              name="category"
-                              placeholder="Enter Category"
+                              type="number"
+                              id="category_id"
+                              name="category_id"
+                              placeholder="Enter Category ID"
                               onChange={(e) =>
                                 handleInputChange(e.target.name, e.target.value)
                               }
@@ -159,16 +157,16 @@ console.log(type);
                           <div className="h-fit w-fit">
                             <label
                               className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-                              htmlFor="status"
+                              htmlFor="status_id"
                             >
-                              Status:
+                              Status ID:
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="string"
-                              id="status"
-                              name="status"
-                              placeholder="Enter Status"
+                              type="number"
+                              id="status_id"
+                              name="status_id"
+                              placeholder="Enter Status ID"
                               onChange={(e) =>
                                 handleInputChange(e.target.name, e.target.value)
                               }
@@ -237,7 +235,7 @@ console.log(type);
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="string"
+                              type="text"
                               id="name"
                               name="name"
                               placeholder="Enter Asset Name"
@@ -255,7 +253,7 @@ console.log(type);
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="string"
+                              type="text"
                               id="description"
                               name="description"
                               placeholder="Enter Description"
@@ -291,7 +289,7 @@ console.log(type);
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="string"
+                              type="text"
                               id="serial_number"
                               name="serial_number"
                               placeholder="Enter Serial Number"
@@ -320,16 +318,16 @@ console.log(type);
                           <div className="h-fit w-fit">
                             <label
                               className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-                              htmlFor="quantity"
+                              htmlFor="purchase_cost"
                             >
-                              Quantity:
+                              Purchase Cost:
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                               type="number"
-                              id="quantity"
-                              name="quantity"
-                              placeholder="Enter Quantity"
+                              id="purchase_cost"
+                              name="purchase_cost"
+                              placeholder="Enter Purchase Cost"
                               onChange={(e) =>
                                 handleInputChange(e.target.name, e.target.value)
                               }
@@ -344,7 +342,7 @@ console.log(type);
                             </label>
                             <input
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              type="string"
+                              type="text"
                               id="company_name"
                               name="company_name"
                               placeholder="Enter Company Name"
@@ -362,9 +360,9 @@ console.log(type);
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                    onClick={addAsset}
+                    onClick={updateAsset}
                   >
-                    Submit Details
+                    Update Asset
                   </button>
                   <button
                     type="button"

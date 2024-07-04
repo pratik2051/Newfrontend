@@ -25,6 +25,8 @@ function Login() {
       
       alert("Successfully logged in");
       localStorage.setItem("user",JSON.stringify(data.accessToken));
+      localStorage.setItem("firstName",data.firstName);
+      localStorage.setItem("lastName",data.lastName);
 
       navigate("/");
 
@@ -38,11 +40,11 @@ function Login() {
     }
   };
 
-  const onSubmit=async(e) => {
-    e.preventDefault();
-    await axios.put(`http://localhost:8080/api/v1/auth/login`);
-    navigate("/");
-}
+//   const onSubmit=async(e) => {
+//     e.preventDefault();
+//     await axios.put(`http://localhost:8080/api/v1/auth/login`);
+//     navigate("/");
+// }
 
   return (
     <>

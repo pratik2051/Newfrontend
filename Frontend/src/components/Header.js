@@ -2,6 +2,7 @@ import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import AuthContext from "../AuthContext";
+import Image from "../assets/user-icon.png"
 import { Link } from "react-router-dom";
 
 const navigation = [
@@ -61,8 +62,8 @@ export default function Header() {
                             <span className="sr-only">Open user menu</span>
                             <img
                               className="h-8 w-8 rounded-full"
-                              src={localStorageData.imageUrl}
-                              alt="profile"
+                              src={Image}
+                              alt={Image}
                             />
                           </Menu.Button>
                         </div>
