@@ -12,7 +12,7 @@ const EmployeeList = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/employees/getallemployee');
+        const response = await axios.get('http://localhost:8080/api/v1/auth/users');
         setEmployees(response.data);
       } catch (error) {
         console.error('Error fetching employees:', error);
