@@ -123,11 +123,12 @@ function AssetDetails() {
                     <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                       Quantity
                     </th>
-                    <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                      Warranty
-                    </th>
+                    
                     <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                       Description
+                    </th>
+                    <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                      Warranty
                     </th>
                     <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                       Actions
@@ -166,16 +167,16 @@ function AssetDetails() {
                       </td>
                       <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                         {element.purchase_date}
-                      </td>
-                      <td className="whitespace-nowrap px-4 py-2 text-gray-900">
-                        {element.supplier_id}
-                      </td>
-                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                        {element.warranty}
+                      </td><td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                        {element.quantity}
                       </td>
                       <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                         {element.description}
                       </td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                        {element.warranty}
+                      </td>
+                      
                       <td className="whitespace-nowrap px-4 py-2 text-white">
                         {/* <Link to={`/editsupplier/${element.id}`}> */}
                         <button
