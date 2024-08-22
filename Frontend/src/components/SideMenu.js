@@ -5,6 +5,7 @@ import Image from "../assets/user-icon.png"
 function SideMenu() {
   const localStorageData = localStorage.getItem("firstName");
   const localStorageData1 = localStorage.getItem("lastName");
+  const role = localStorage.getItem("role"); // Retrieve the user's role from local storage
   
   return (
     <div className="h-full flex-col justify-between  bg-white hidden lg:flex ">
@@ -21,16 +22,13 @@ function SideMenu() {
             <span className="text-sm font-medium"> Dashboard </span>
           </Link>
 
-          <Link
-            to="/employeelist"
-            className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-          >
-            <img
-              alt="purchase-icon"
-              src={require("../assets/user-icon.png")}
-            />
-            <span className="text-sm font-medium">  Employee</span>
-          </Link>
+           {/* Employee List Link - visible only to Admins */}
+           {role === "ADMIN" && (
+            <Link to="/employeelist" className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+              <img alt="purchase-icon" src={require("../assets/user-icon.png")} />
+              <span className="text-sm font-medium"> Employee</span>
+            </Link>
+          )}
          
           <Link
             to="/asset"
