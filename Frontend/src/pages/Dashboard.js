@@ -8,6 +8,9 @@ function Dashboard() {
   const [spareAssets, setSpareAssets] = useState([]);
   const [workingAssets, setWorkingAssets] = useState([]);
   const [computers, setComputers] = useState([]);
+  const localStorageData = localStorage.getItem("firstName");
+  const localStorageData1 = localStorage.getItem("lastName");
+  const role = localStorage.getItem("role"); // Retrieve the user's role from local storage
 
   useEffect(() => {
     const fetchDashboardData = async () => {
@@ -41,7 +44,9 @@ function Dashboard() {
   return (
     <div className="grid grid-cols-1 col-span-12 lg:col-span-10 gap-6 md:grid-cols-3 lg:grid-cols-4 p-4">
       <DashboardCard title="Total Assets" value={totalAsset.length} />
+      {role === "ADMIN" && (  
       <DashboardCard title="Total Employees" value={totalEmployee} />
+    )}
       <DashboardCard title="Broken Assets" value={brokenAssets} />
       <DashboardCard title="Spare Assets" value={spareAssets} />
       <DashboardCard title="Working Assets" value={workingAssets} />
